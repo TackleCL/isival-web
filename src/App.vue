@@ -1,8 +1,12 @@
 <template>
   <v-app>
-    <!-- @import: header -->
-    <app-header />
+    <!-- @import: drawer -->
+    <app-drawer v-model="drawer" />
 
+    <!-- @import: header -->
+    <app-header @input="drawer = $event" />
+
+    <!-- content -->
     <v-main>
       <router-view />
     </v-main>
@@ -13,16 +17,15 @@
 </template>
 
 <script>
+import AppDrawer from "./components/layout/AppDrawer.vue";
 import AppHeader from "./components/layout/AppHeader.vue";
 import AppFooter from "./components/layout/AppFooter.vue";
 
 export default {
   name: "App",
 
-  components: { AppHeader, AppFooter },
+  components: { AppDrawer, AppHeader, AppFooter },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({ drawer: null }),
 };
 </script>

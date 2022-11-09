@@ -39,7 +39,7 @@
 
       <!-- @section: mission -->
       <div class="px-6 px-md-0 | mt-9">
-        <v-card tile flat color="primary">
+        <v-card flat color="#00308A" class="section--mission">
           <v-card-text class="py-9 py-md-16">
             <v-row class="py-md-8">
               <v-col cols="12" md="6" lg="5" class="px-6 pl-lg-16">
@@ -47,7 +47,7 @@
                   <span class="accent--text font-weight-bold">/</span>
                   <span class="white--text ml-3">Misión</span>
                 </h6>
-                <p class="white--text text-body-1 text-md-body-2 mt-3">
+                <p class="white--text text-body-1 mt-3">
                   Isival Ingeniería Ltda., tiene como misión entregar un
                   servicio integral para la satisfaccion de sus clietnes, a
                   través de la solcuión en el manejo de fluidos y la entrega de
@@ -61,6 +61,25 @@
           </v-card-text>
         </v-card>
       </div>
+
+      <!-- @section: vision -->
+      <v-row class="px-6 px-md-0 | my-9 my-md-16 py-md-12" align="center">
+        <v-col cols="12" md="8" order-md="2" class="pl-md-15">
+          <h6 class="text-h4 font-weight-medium">
+            <span class="accent--text font-weight-bold">/</span>
+            <span class="ml-3">Visión</span>
+          </h6>
+          <p class="text--secondary mt-4">
+            Ser una empresa de manejo de fluidos reconocidas a nivel nacional,
+            por sus servicios de reparación, arriendo y venta debombas
+            sumergibles, como tambien por sus soluciones innovadoras y de alto
+            estándares de calidad.
+          </p>
+        </v-col>
+        <v-col cols="12" md="4" order-md="1">
+          <img src="@/assets/about-vision.png" alt="" width="100%" />
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -72,3 +91,10 @@ export default {
   components: { PageHeader },
 };
 </script>
+
+<style lang="scss" scoped>
+.section--mission {
+  background-position: right center;
+  background-image: url("../assets/about-mission.png");
+}
+</style>

@@ -13,17 +13,23 @@
       <v-container>
         <v-row>
           <v-col>
-            <span class="text-caption">Janequeo 2180, Concepción</span>
+            <span class="text-caption">
+              {{ company.address }} • {{ company.city }}
+            </span>
           </v-col>
           <v-col class="text-end | text-caption">
-            <span class="contact-info">
+            <span class="contact-info" v-if="company.email">
               <v-icon class="mr-2">mdi-email-outline</v-icon>
-              <span>info@isival.cl</span>
+              <a :href="`mailto:${company.email}`" class="text-decoration-none">
+                {{ company.email }}
+              </a>
             </span>
 
-            <span class="contact-info | ml-6">
+            <span class="contact-info | ml-6" v-if="company.phone">
               <v-icon class="mr-2">mdi-phone-outline</v-icon>
-              <span>(41) 225 2350</span>
+              <a :href="`tel:${company.phone}`" class="text-decoration-none">
+                {{ company.phone }}
+              </a>
             </span>
           </v-col>
         </v-row>
@@ -36,7 +42,9 @@
         <v-row align="center">
           <!-- brand -->
           <v-col cols="3">
-            <img src="../../assets/logo.svg" alt="" height="54" />
+            <a href="/">
+              <img :src="company.logo" :alt="company.name" height="54" />
+            </a>
           </v-col>
 
           <!-- menu -->
@@ -59,6 +67,7 @@
         </v-row>
       </v-container>
     </header>
+    <v-divider></v-divider>
   </div>
 </template>
 
@@ -67,7 +76,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["items"]),
+    ...mapState(["items", "company"]),
   },
 };
 </script>

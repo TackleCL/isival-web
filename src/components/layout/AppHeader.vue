@@ -59,9 +59,11 @@
               {{ item.title }}
             </v-btn>
 
-            <v-chip color="primary" text-color="white" class="ml-3">
+            <v-chip color="primary" text-color="white" class="ml-3" :to="{name: 'Quote'}">
               <v-icon>mdi-cart-outline</v-icon>
-              <v-avatar right class="accent font-weight-bold"> 0 </v-avatar>
+              <v-avatar right class="accent font-weight-bold">
+                {{ cartCount }}
+              </v-avatar>
             </v-chip>
           </v-col>
         </v-row>
@@ -76,7 +78,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["items", "company"]),
+    ...mapState(["items", "company", "cartCount"]),
   },
 };
 </script>

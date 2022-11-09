@@ -43,7 +43,7 @@ export default {
 
   async mounted() {
     this.overlay = true;
-    this.getCompany();
+    await this.getCompany();
     this.overlay = false;
     // ! delete (only test)
     // setTimeout(() => {

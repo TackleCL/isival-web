@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "aldus-platform",
   storageBucket: "aldus-platform.appspot.com",
   messagingSenderId: "965838829330",
-  appId: "1:965838829330:web:963ee78d9b6980b44025cb"
+  appId: "1:965838829330:web:59f60fd2705613a94025cb"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -33,11 +33,11 @@
 
     <!-- cart -->
     <div class="px-4 mt-4">
-      <v-btn block depressed x-large color="primary">
+      <v-btn block depressed x-large color="primary" :to="{name: 'Quote'}">
         <v-icon class="mr-2">mdi-cart-outline</v-icon>
         Cotización
         <v-avatar right class="accent font-weight-bold ml-3" size="33">
-          0
+          {{ cartCount }}
         </v-avatar>
       </v-btn>
     </div>
@@ -51,7 +51,7 @@ export default {
   props: ["value"],
 
   computed: {
-    ...mapState(["items"]),
+    ...mapState(["items", "cartCount"]),
   },
 };
 </script>

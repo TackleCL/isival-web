@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { db } from '@/firebase'
-import { doc, getDoc } from "firebase/firestore";
+
+
+// @import modules
+import Company from './modules/company';
+import Product from './modules/product';
 
 Vue.use(Vuex)
 
@@ -14,15 +17,14 @@ export default new Vuex.Store({
       { title: "Rental", to: { name: "Rental" } },
     ],
     //// company // Vn0rufgGTFzPmv99qoQ3
-    company: {},
-    companyId: "lNiuFhfAIKsCuFkasIgy",
+    companyId: "r0InRTbrP5yccRCwFGCV",
     //// cart
     cart: [],
     cartCount: 0,
   },
   mutations: {
-    SET_COMPANY(state, payload) { state.company = payload },
-    ADD_CART(state, item) {
+    /////
+    ADD_TO_CART(state, item) {
       let found = state.cart.find(product => product.id == item.id);
 
       if (found) {
@@ -47,19 +49,9 @@ export default new Vuex.Store({
       }
     }
   },
-  actions: {
-    // @app
-    async getCompany({ commit, state }) {
-      const docRef = doc(db, "companies", state.companyId);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        commit("SET_COMPANY", docSnap.data())
-      } else {
-        console.debug("No such document!");
-      }
-    }
-  },
+  actions: {},
   modules: {
+    Company,
+    Product,
   }
 })

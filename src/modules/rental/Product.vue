@@ -1,27 +1,26 @@
 <template>
   <div>
     <pre>
-      {{ items }}
+      {{ item }}
     </pre>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
-
 export default {
   data: () => ({
-    items: [],
+    item: {},
   }),
 
   methods: {
-    ...mapActions("Product", ["readerProducts"]),
+    ...mapActions("Product", ["readerProduct"]),
   },
 
   async mounted() {
     this.loading = true;
-    await this.readerProducts().then((resp) => {
-      this.items = resp;
+    await this.readerProduct(this.$route.query.id).then((resp) => {
+      this.item = resp;
     });
     this.loading = false;
   },

@@ -38,17 +38,13 @@ export default {
   data: () => ({ drawer: null, overlay: false }),
 
   methods: {
-    ...mapActions(["getCompany"]),
+    ...mapActions("Company", ["readerCompany"]),
   },
 
   async mounted() {
     this.overlay = true;
-    await this.getCompany();
+    await this.readerCompany();
     this.overlay = false;
-    // ! delete (only test)
-    // setTimeout(() => {
-    //   this.overlay = false;
-    // }, 2000);
   },
 };
 </script>

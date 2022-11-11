@@ -1,6 +1,11 @@
 <template>
   <!-- mobile: header -->
-  <v-app-bar app flat v-if="$vuetify.breakpoint.mobile">
+  <v-app-bar
+    app
+    elevate-on-scroll
+    color="white"
+    v-if="$vuetify.breakpoint.mobile"
+  >
     <img src="../../assets/logo.svg" alt="" height="30" />
     <v-spacer />
     <v-app-bar-nav-icon @click="$emit('input', true)" class="primary--text" />
@@ -37,7 +42,7 @@
     </v-system-bar>
 
     <!-- header -->
-    <header class="header-wrapper | py-2">
+    <header class="header-wrapper | py-2" elevate-on-scroll>
       <v-container>
         <v-row align="center">
           <!-- brand -->
@@ -59,7 +64,12 @@
               {{ item.title }}
             </v-btn>
 
-            <v-chip color="primary" text-color="white" class="ml-3" :to="{name: 'Quote'}">
+            <v-chip
+              color="primary"
+              text-color="white"
+              class="ml-3"
+              :to="{ name: 'Quote' }"
+            >
               <v-icon>mdi-cart-outline</v-icon>
               <v-avatar right class="accent font-weight-bold">
                 {{ cartCount }}
@@ -69,7 +79,7 @@
         </v-row>
       </v-container>
     </header>
-    <v-divider></v-divider>
+    <!-- <v-divider></v-divider> -->
   </div>
 </template>
 

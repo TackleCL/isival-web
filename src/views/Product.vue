@@ -235,6 +235,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 import { mapActions } from "vuex";
 import PageHeader from "../components/pages/PageHeader.vue";
 
@@ -254,7 +255,8 @@ export default {
     ...mapActions("Product", ["readerProduct"]),
 
     addToCart(item) {
-      console.debug("AddItem: ", item);
+      const product = _.pick(item, ["name", "sku", "image"]);
+      this.$store.commit("Cart/ADD_TO_CART", product);
     },
 
     async getProduct(sku) {

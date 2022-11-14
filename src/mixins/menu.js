@@ -3,7 +3,7 @@ export default {
   data: () => ({
     items: [
       { title: "Inicio", to: { path: "/" } },
-      { title: "Nosotros", to: { path: "/nosotros" } },
+      { title: "Nosotros", to: { name: "About" } },
       { title: "Rental", to: { name: "Rental" } },
     ],
   }),

@@ -9,6 +9,12 @@
   >
     <img src="../../assets/logo.svg" alt="" height="39" />
     <v-spacer />
+    <v-btn text :to="{ name: 'Quote' }">
+      <span>Cotización</span>
+      <v-chip small color="accent" class="px-2 ml-1">
+        <span>{{ cartCount }}</span>
+      </v-chip>
+    </v-btn>
     <v-app-bar-nav-icon @click="$emit('input', true)" class="primary--text" />
   </v-app-bar>
 
@@ -23,7 +29,12 @@
         </v-col>
         <v-col class="text-end">
           <template v-for="(item, index) in items">
-            <v-btn plain :to="item.to" :key="index" active-class="primary--text">
+            <v-btn
+              plain
+              :to="item.to"
+              :key="index"
+              active-class="primary--text"
+            >
               {{ item.title }}
             </v-btn>
           </template>
@@ -46,7 +57,7 @@ import Menu from "@/mixins/menu";
 export default {
   computed: {
     ...mapState("Company", ["company"]),
-    ...mapState(["cartCount"]),
+    ...mapState("Cart", ["cartCount"]),
   },
 
   mixins: [Menu],

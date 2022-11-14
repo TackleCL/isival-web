@@ -31,7 +31,7 @@ const routes = [
   {
     path: '/cotizacion',
     name: 'Quote',
-    component: () => import('../modules/rental/Cart.vue')
+    component: () => import('../views/Quote.vue')
   }
 ]
 

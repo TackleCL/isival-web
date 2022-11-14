@@ -55,7 +55,7 @@ export default {
   mixins: [Menu],
 
   computed: {
-    ...mapState(["cartCount"]),
+    ...mapState("Cart", ["cartCount"]),
   },
 };
 </script>

@@ -5,11 +5,7 @@
     <!-- @content -->
     <v-container>
       <!-- @section: text -->
-      <v-row
-        class="px-6 px-md-0 | py-4 py-md-12"
-        align="center"
-        justify="space-between"
-      >
+      <v-row class="py-4 py-md-12" align="center" justify="space-between">
         <v-col cols="12" md="5">
           <h6 class="text-h6 text-md-h5">
             Isival Ingenieria limitada, ofrece sus servicios de Arriendo de
@@ -38,7 +34,7 @@
       </v-row>
 
       <!-- @section: mission -->
-      <div class="px-6 px-md-0 | mt-9">
+      <div class="mt-9">
         <v-card flat color="#00308A" class="section--mission">
           <v-card-text class="py-9 py-md-16">
             <v-row class="py-md-8">
@@ -63,7 +59,7 @@
       </div>
 
       <!-- @section: vision -->
-      <v-row class="px-6 px-md-0 | my-9 my-md-16 py-md-12" align="center">
+      <v-row class="my-9 my-md-16 py-md-12" align="center">
         <v-col cols="12" md="8" order-md="2" class="pl-md-15">
           <h6 class="text-h4 font-weight-medium">
             <span class="accent--text font-weight-bold">/</span>

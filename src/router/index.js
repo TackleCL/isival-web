@@ -20,13 +20,13 @@ const routes = [
   {
     path: '/rental',
     name: 'Rental',
-    component: () => import('../modules/rental/Products.vue')
+    component: () => import('../views/Products.vue')
   },
   {
     path: '/rental/product',
     name: 'Product',
     props: true,
-    component: () => import('../modules/rental/Product.vue')
+    component: () => import('../views/Product.vue')
   },
   {
     path: '/cotizacion',
@@ -41,9 +41,9 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   window.scrollTo(0, 0)
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0)
+  next()
+})
 
 export default router

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-
 // @import modules
+import Cart from './modules/cart';
 import Company from './modules/company';
 import Product from './modules/product';
 
@@ -10,14 +10,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    //// navigation
-    items: [
-      { title: "Inicio", to: { path: "/" } },
-      { title: "Nosotros", to: { path: "/nosotros" } },
-      { title: "Rental", to: { name: "Rental" } },
-    ],
     //// company // Vn0rufgGTFzPmv99qoQ3
-    companyId: "r0InRTbrP5yccRCwFGCV",
+    companyId: "Vn0rufgGTFzPmv99qoQ3",
     //// cart
     cart: [],
     cartCount: 0,
@@ -53,5 +47,6 @@ export default new Vuex.Store({
   modules: {
     Company,
     Product,
+    Cart
   }
 })

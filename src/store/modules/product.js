@@ -6,9 +6,13 @@ import { collection, getDocs, query, where, doc, getDoc } from "firebase/firesto
 export default {
   namespaced: true,
 
-  state: {},
+  state: {
+    products: []
+  },
 
-  mutations: {},
+  mutations: {
+    SET_PRODUCTS(state, payload) { state.products = payload }
+  },
 
   actions: {
     async readerProduct({ rootState }, sku) {
@@ -27,19 +31,20 @@ export default {
 
       // TODO: only store.categories is empty
       if (rootState.Company.company.categories) {
-        console.debug("HOLA")
+
+        const array = rootState.Company.company.categories
+        item.categoryName = array.find(todo => todo.docId === item.categoryId).name
+
       } else {
-        console.debug("CHAU")
+        const categoryRef = doc(db, `${companyRef}/categories`, item.categoryId);
+        const categorySnap = await getDoc(categoryRef);
+        if (categorySnap.exists()) {
+          item.categoryName = categorySnap.data().name
+        } else {
+          alert("Categoría no encontrada");
+        }
       }
 
-      // 02. get category name
-      const categoryRef = doc(db, `${companyRef}/categories`, item.categoryId);
-      const categorySnap = await getDoc(categoryRef);
-      if (categorySnap.exists()) {
-        item.categoryName = categorySnap.data().name
-      } else {
-        alert("Categoría no encontrada");
-      }
 
       // 03. get related products
       let related = []
@@ -54,7 +59,7 @@ export default {
       return item
     },
 
-    async readerProducts({ rootState }) {
+    async readerProducts({ rootState, commit }) {
 
       // 00. create variables
       const items = []
@@ -64,7 +69,8 @@ export default {
       // 01. get products
       const querySnapshot = await getDocs(collection(db, `${companyRef}/products`));
       querySnapshot.forEach((doc) => {
-        items.push({ docId: doc.id, ...doc.data() })
+        const data = _.pick(doc.data(), ['name', 'sku', 'image', 'disabled', 'categoryId']);
+        items.push({ docId: doc.id, ...data })
       });
 
       // 02. get categories
@@ -75,13 +81,12 @@ export default {
 
       // 03. create json
       _.forEach(categories, function (value, key) {
-        console.debug("0", value.name)
         let newItems = _.filter(items, { 'categoryId': value.docId });
-        categories[key]["items"] = newItems
+        categories[key]["products"] = newItems
       })
 
       // return
-      return categories
+      commit("SET_PRODUCTS", categories)
     }
   },
 

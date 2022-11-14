@@ -14,7 +14,9 @@ export default new Vuetify({
         primary: '#1F5298',
 
         //// palette grey
-        cloud: '#F3F5F6'
+        cloud: '#F3F5F6',
+        silver: '#959DA5',
+        concrete: '#3E464D'
       },
     },
   },

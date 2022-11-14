@@ -21,6 +21,7 @@
           :key="index"
           class="py-2 grey--text"
           active-class="primary--text"
+          @click="$emit('input')"
         >
           <v-list-item-content>
             <v-list-item-title v-text="item.title" class="text-h6" />
@@ -33,7 +34,7 @@
 
     <!-- cart -->
     <div class="px-4 mt-4">
-      <v-btn block depressed x-large color="primary" :to="{name: 'Quote'}">
+      <v-btn block depressed x-large color="primary" :to="{ name: 'Quote' }">
         <v-icon class="mr-2">mdi-cart-outline</v-icon>
         Cotización
         <v-avatar right class="accent font-weight-bold ml-3" size="33">
@@ -46,12 +47,15 @@
 
 <script>
 import { mapState } from "vuex";
+import Menu from "@/mixins/menu";
 
 export default {
   props: ["value"],
 
+  mixins: [Menu],
+
   computed: {
-    ...mapState(["items", "cartCount"]),
+    ...mapState(["cartCount"]),
   },
 };
 </script>

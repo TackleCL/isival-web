@@ -3,7 +3,7 @@
     <!-- @section: presentation -->
     <v-container>
       <v-row
-        class="px-6 px-md-0 my-3 mb-6 my-md-16 py-md-6"
+        class="my-3 mb-6 my-md-16 py-md-6"
         align="center"
         justify="space-between"
       >
@@ -35,17 +35,9 @@
       <!-- @section: services -->
       <v-card flat style="margin-top: -60px">
         <v-card-text>
-          <v-row justify="space-between" align="center" class="px-6">
+          <v-row justify="space-between" align="center" class="px-3">
             <v-col cols="12" md="5">
-              <p
-                class="
-                  secondary--text
-                  font-weight-medium
-                  my-4
-                  mt-6 mt-md-9
-                  mb-0
-                "
-              >
+              <p class="secondary--text font-weight-medium my-4 mt-3 mb-0">
                 <span class="font-weight-bold accent--text">/</span>
                 NUESTRA OFERTA
               </p>
@@ -59,7 +51,7 @@
                 a tus problemas y conseguir tus objetivos.
               </p>
             </v-col>
-            <v-col cols="12" md="6" class="pt-md-9">
+            <v-col cols="12" md="6">
               <template v-for="(item, index) in services">
                 <item-service
                   :key="item.title"
@@ -75,7 +67,7 @@
       </v-card>
 
       <!-- @section: banner -->
-      <div class="px-3 px-md-0 | my-6 mb-9 my-md-15"><banner-services /></div>
+      <div class="my-6 mt-md-15"><banner-services /></div>
     </v-container>
   </div>
 </template>

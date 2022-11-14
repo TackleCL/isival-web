@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- @import: drawer -->
-    <app-drawer v-model="drawer" />
+    <app-drawer v-model="drawer" @input="drawer = null" />
 
     <!-- @import: header -->
     <app-header @input="drawer = $event" />

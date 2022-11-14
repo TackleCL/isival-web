@@ -1,6 +1,6 @@
 <template>
-  <div class="grey lighten-3 | py-9 pt-md-16">
-    <v-container class="pt-lg-12">
+  <v-sheet color="cloud" height="216" class="d-flex flex-column justify-end">
+    <v-container class="mb-6">
       <v-row align="center">
         <v-col cols="2" md="1">
           <v-sheet color="accent" height="2" />
@@ -15,19 +15,26 @@
       </v-row>
       <h1 class="text-h3 font-weight-medium">{{ title }}</h1>
     </v-container>
-  </div>
+  </v-sheet>
 </template>
 
 <script>
 export default {
-  props: ["title"],
+  props: ["title", "product"],
 
   data: () => ({
     items: [{ text: "ISIVAL", disabled: false }],
   }),
 
   mounted() {
-    this.items.push({ text: this.title, disabled: true });
+    if (this.product) {
+      this.items.push(
+        { text: "Servicio Rental", disabled: false, to: "/rental" },
+        { text: "Equipo", disabled: true }
+      );
+    } else {
+      this.items.push({ text: this.title, disabled: true });
+    }
   },
 };
 </script>

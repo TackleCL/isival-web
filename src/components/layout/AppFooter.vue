@@ -1,5 +1,5 @@
 <template>
-  <div class="app-footer grey lighten-4">
+  <div class="app-footer grey lighten-4 mt-md-15">
     <!-- <v-divider /> -->
     <v-container class="py-6 py-md-16">
       <v-row align="center">

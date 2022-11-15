@@ -47,9 +47,13 @@ export default {
       // create variables
       const companyId = rootState.companyId
 
-      await addDoc(collection(db, `companies/${companyId}/webquotes`), {
-        products: state.cart, ...payload
-      });
+      await addDoc(collection(db, `companies/${companyId}/webquotes`),
+        {
+          products: state.cart,
+          createdAt: new Date(),
+          ...payload
+        }
+      );
 
       commit("RESET_CART")
     }

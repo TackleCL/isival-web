@@ -1,11 +1,10 @@
 <template>
   <div class="products">
-    <page-header title="ISIVAL | Rental" />
+    <!-- header -->
+    <v-app-title title="Rental Equipos" />
 
     <!-- content -->
     <main class="products-main">
-      <v-progress-linear top absolute :active="loading" indeterminate />
-
       <v-container class="mt-3 mt-md-15 product-container">
         <template v-for="(item, index) in products">
           <v-row
@@ -55,7 +54,12 @@
                       <v-card-title class="px-0 py-2 primary--text">
                         {{ product.name }}
                         <v-spacer />
-                        <v-icon small color="accent" v-if="!$vuetify.breakpoint.mobile">mdi-arrow-right</v-icon>
+                        <v-icon
+                          small
+                          color="accent"
+                          v-if="!$vuetify.breakpoint.mobile"
+                          >mdi-arrow-right</v-icon
+                        >
                       </v-card-title>
                     </v-card>
                   </v-col>
@@ -64,21 +68,21 @@
             </v-col>
           </v-row>
         </template>
-
-        <!-- loading -->
-        <page-loading v-model="loading" v-if="products.length < 1" />
       </v-container>
     </main>
+
+    <!-- loading -->
+    <v-app-loading v-model="loading" :absolute="true" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
-import PageHeader from "../components/pages/PageHeader.vue";
-import PageLoading from "../components/LoadingPage.vue";
+import vAppTitle from "../layout/Title.vue";
+import vAppLoading from "../layout/Loading.vue";
 
 export default {
-  components: { PageHeader, PageLoading },
+  components: { vAppTitle, vAppLoading },
 
   data: () => ({
     loading: false,

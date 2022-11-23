@@ -1,6 +1,7 @@
 <template>
   <div class="Quote">
-    <page-header title="Cotización" />
+    <!-- header -->
+    <v-app-title title="Cotización" />
 
     <v-container class="mt-3 mt-md-12">
       <v-alert
@@ -149,10 +150,10 @@
 <script>
 import forms from "@/mixins/forms";
 import { mapActions, mapState } from "vuex";
-import PageHeader from "../components/pages/PageHeader.vue";
+import vAppTitle from "../layout/Title.vue";
 
 export default {
-  components: { PageHeader },
+  components: { vAppTitle },
 
   mixins: [forms],
 

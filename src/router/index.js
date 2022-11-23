@@ -20,6 +20,16 @@ const routes = [
     name: 'Parts',
     component: () => import('../views/Parts.vue')
   },
+  {
+    path: '/servicio',
+    name: 'Service',
+    component: () => import('../views/Service.vue')
+  },
+  {
+    path: '/contacto',
+    name: 'Contact',
+    component: () => import('../views/Contact.vue')
+  },
 
   // @module: rental
   {

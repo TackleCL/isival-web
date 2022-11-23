@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <page-header title="Quienes Somos" />
+    <!-- header -->
+    <v-app-title title="Quienes Somos" />
 
     <!-- @content -->
     <v-container>
@@ -84,18 +85,18 @@
 </template>
 
 <script>
+import vAppTitle from "../layout/Title.vue";
 import vAppLoading from "../layout/Loading.vue";
-import PageHeader from "../components/pages/PageHeader.vue";
 
 export default {
-  components: { vAppLoading, PageHeader },
+  components: { vAppTitle, vAppLoading },
 
   data: () => ({ loading: false }),
 
   created() {
     this.loading = true;
 
-    setTimeout(() => this.loading = false, 600);
+    setTimeout(() => (this.loading = false), 600);
   },
 };
 </script>

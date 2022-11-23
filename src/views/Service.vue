@@ -1,7 +1,7 @@
 <template>
-  <div class="parts">
+  <div class="service">
     <!-- header -->
-    <v-app-title title="Repuestos" />
+    <v-app-title title="Servicio Técnico" />
 
     <!-- content -->
     <v-container>

@@ -1,33 +1,18 @@
 <template>
-  <div class="parts">
+  <div class="contact">
     <!-- header -->
-    <v-app-title title="Repuestos" />
+    <v-app-title title="Contacto" />
 
     <!-- content -->
     <v-container>
       <v-row>
         <!-- content -->
-        <v-col cols="12" md="8">
+        <v-col cols="12">
           <p class="text-h6 font-weight-regular mt-9">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Necessitatibus expedita id quos odit nisi ipsum quia facere
             officiis! In, magnam.
           </p>
-        </v-col>
-
-        <!-- form -->
-        <v-col cols="12" md="3">
-          <h4 class="mb-3 text-h6">Cotiza Repustos</h4>
-          <v-form ref="form" @submit.prevent>
-            <v-text-field filled dense label="Nombre" />
-            <v-text-field
-              filled
-              dense
-              hide-details
-              label="Email *"
-              type="email"
-            />
-          </v-form>
         </v-col>
       </v-row>
     </v-container>

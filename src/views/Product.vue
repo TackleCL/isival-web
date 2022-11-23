@@ -1,6 +1,7 @@
 <template>
   <div class="product">
-    <page-header title="Descripción" :product="true" />
+    <!-- header -->
+    <v-app-title title="Detalle Equipo" />
 
     <!-- content -->
     <v-container class="mt-3 mt-md-15 product-container">
@@ -237,10 +238,10 @@
 <script>
 import _ from "lodash";
 import { mapActions } from "vuex";
-import PageHeader from "../components/pages/PageHeader.vue";
+import vAppTitle from "../layout/Title.vue";
 
 export default {
-  components: { PageHeader },
+  components: { vAppTitle },
 
   data: () => ({
     tab: null,

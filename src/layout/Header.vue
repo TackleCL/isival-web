@@ -67,6 +67,8 @@
               depressed
               color="light-blue lighten-1"
               class="text-caption"
+              href="http://www.isival.cl/wp-content/uploads/2018/04/Catalogo-de-Bombas-Arriendo.pdf"
+              target="_blank"
             >
               <span class="text-capitalize font-weight-medium ml-1">
                 Descargar Catálogo
@@ -89,19 +91,20 @@
           <!-- menu -->
           <v-col class="text-center">
             <template v-for="(item, index) in items">
-              <v-btn
-                plain
-                :to="item.to"
-                :key="index"
-                active-class="primary--text"
-              >
+              <v-btn plain :to="item.to" :key="index" active-class="blue--text">
                 {{ item.title }}
               </v-btn>
             </template>
           </v-col>
           <!-- cart -->
           <v-col cols="2">
-            <v-card flat color="blue darken-4" dark class="rounded-sm" :to="{ name: 'Quote' }">
+            <v-card
+              flat
+              color="blue darken-4"
+              dark
+              class="rounded-sm"
+              :to="{ name: 'Quote' }"
+            >
               <v-list-item dense two-line class="px-2" style="min-height: 55px">
                 <v-list-item-avatar class="my-0 rounded-sm">
                   <v-icon class="blue darken-2" dark> mdi-cart-outline </v-icon>
@@ -118,7 +121,7 @@
         </v-row>
       </v-container>
     </v-app-bar>
-    <v-divider class="gray lighten-5" />
+    <v-divider class="grey lighten-3" v-if="$route.path === '/'" />
   </header>
 </template>
 

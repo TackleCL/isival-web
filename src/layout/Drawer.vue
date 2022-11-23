@@ -7,7 +7,7 @@
   >
     <!-- header -->
     <v-app-bar flat>
-      <img src="../../assets/logo.svg" alt="" height="30" />
+      <img :src="company.logo" alt="" height="30" />
       <v-spacer />
       <v-btn color="primary" @click="$emit('input', false)" icon>
         <v-icon>mdi-close</v-icon>
@@ -33,7 +33,7 @@
     <v-divider></v-divider>
 
     <!-- cart -->
-    <div class="px-4 mt-4">
+    <div class="px-4 mt-4" v-if="false">
       <v-btn block depressed x-large color="primary" :to="{ name: 'Quote' }">
         <v-icon class="mr-2">mdi-cart-outline</v-icon>
         Cotización
@@ -55,6 +55,7 @@ export default {
   mixins: [Menu],
 
   computed: {
+    ...mapState("Company", ["company"]),
     ...mapState("Cart", ["cartCount"]),
   },
 };

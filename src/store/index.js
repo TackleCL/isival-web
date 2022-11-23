@@ -10,10 +10,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isMobile: false,
     //// company // Vn0rufgGTFzPmv99qoQ3
     companyId: "Vn0rufgGTFzPmv99qoQ3",
   },
-  mutations: {},
+  mutations: {
+    set_isMobile(state, payload) { state.isMobile = payload }
+  },
   actions: {},
   modules: {
     Company,

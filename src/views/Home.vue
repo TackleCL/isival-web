@@ -1,87 +1,106 @@
 <template>
   <div class="home">
-    <!-- @section: presentation -->
-    <v-container>
-      <v-row
-        class="my-3 mb-6 my-md-16 py-md-6"
-        align="center"
-        justify="space-between"
-      >
-        <v-col cols="12" md="5">
-          <h3 class="text-h3 font-weight-medium">
-            Especialistas en bombas sumergibles
-          </h3>
-        </v-col>
-        <v-col cols="12" md="5">
-          <p class="mb-0 text-subtitle-1 text--secondary">
-            Somos una empresa especialista con más de 00 años de experiencia en
-            la venta, arriendo, servicio técnico, repuestos y asesoría técnica
-            en tus proyectos de agua.
-          </p>
-        </v-col>
-      </v-row>
-    </v-container>
+    <!-- 01. presentation -->
+    <section class="my-12">
+      <v-container>
+        <v-row align="center" justify="space-between" style="min-height: 290px">
+          <v-col cols="12" md="5">
+            <h2 class="text-h4 text-md-h3 font-weight-bold">
+              Especialistas en bombas sumergibles
+            </h2>
+          </v-col>
+          <v-col cols="12" md="5">
+            <p class="text-h6 font-weight-regular text--secondary mb-0">
+              Somos una empresa especialista con más de 00 años de experiencia
+              en la venta, arriendo, servicio técnico, repuestos y asesoría
+              técnica en tus proyectos de agua.
+            </p>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
 
-    <!-- @section: slide -->
-    <v-card tile flat>
-      <v-img
-        src="http://www.isival.cl/wp-content/uploads/2017/08/1slider.jpg"
-        height="500"
-      />
-      <!-- <carousel height="500" /> -->
-    </v-card>
+    <!-- 02. services -->
+    <section class="blue lighten-5 py-9">
+      <v-container>
+        <v-row justify="center">
+          <v-col cols="12" md="5" class="text-center">
+            <h6 class="text-button primary--text">
+              Soluciones para tus proyectos
+            </h6>
+            <h3 class="text-h4 font-weight-bold">Nuestros Servicios</h3>
+            <p class="text-subtitle-1 mt-3 text--secondary">
+              Te asesoramos en todos los procesos para que puedas dar solución a
+              tus problemas y conseguir tus objetivos.
+            </p>
+          </v-col>
+        </v-row>
 
-    <v-container>
-      <!-- @section: services -->
-      <v-card flat style="margin-top: -60px">
-        <v-card-text>
-          <v-row justify="space-between" align="center" class="px-3">
-            <v-col cols="12" md="5">
-              <p class="secondary--text font-weight-medium my-4 mt-3 mb-0">
-                <span class="font-weight-bold accent--text">/</span>
-                NUESTRA OFERTA
-              </p>
-              <h3
-                class="text-h4 text-md-h3 font-weight-medium black--text mb-3"
-              >
-                Soluciones para ti
-              </h3>
-              <p class="text-h6 font-weight-regular text-break">
-                Te asesoramos en todos los procesos para que puedas dar solución
-                a tus problemas y conseguir tus objetivos.
-              </p>
+        <v-row>
+          <template v-for="(item, index) in services">
+            <v-col cols="12" md="3" :key="index">
+              <v-card flat>
+                <v-card-text class="text-center py-9">
+                  <v-avatar
+                    color="blue lighten-5"
+                    class="rounded-lg mb-3"
+                    size="69"
+                  >
+                    <v-icon color="primary" large>
+                      {{ `mdi-${item.icon}` }}
+                    </v-icon>
+                  </v-avatar>
+                  <h6 class="text-h6 black--text">{{ item.title }}</h6>
+                  <p
+                    class="
+                      text-subtitle-1 text-md-subtitle-2
+                      font-weight-regular
+                      mb-0
+                    "
+                  >
+                    {{ item.text }}
+                  </p>
+                </v-card-text>
+              </v-card>
             </v-col>
-            <v-col cols="12" md="6">
-              <template v-for="(item, index) in services">
-                <item-service
-                  :key="item.title"
-                  :icon="item.icon"
-                  :title="item.title"
-                  :text="item.text"
-                />
-                <v-divider v-if="index < services.length - 1" :key="index" />
-              </template>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
+          </template>
+        </v-row>
+      </v-container>
+    </section>
 
-      <!-- @section: banner -->
-      <div class="my-6 mt-md-15"><banner-services /></div>
-    </v-container>
+    <!-- 03. slide -->
+    <section class="my-9 my-md-16">
+      <v-container class="py-0">
+        <v-carousel
+          cycle
+          class="rounded-lg"
+          hide-delimiter-background
+          :height="isMobile ? 250 : 500"
+        >
+          <v-carousel-item
+            v-for="(item, i) in items"
+            :key="i"
+            :src="item.src"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-container>
+    </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ItemService from "@/components/pages/home/ItemService.vue";
-import BannerServices from "@/components/pages/home/BannerServices.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
-  components: { ItemService, BannerServices },
 
   data: () => ({
+    items: [
+      { src: "http://www.isival.cl/wp-content/uploads/2017/08/1slider.jpg" },
+      { src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg" },
+    ],
+
     services: [
       {
         icon: "package-variant-closed-check",
@@ -96,7 +115,7 @@ export default {
       {
         icon: "account-wrench-outline",
         title: "Repuestos",
-        text: "Disponemos de una amplia gama de repuesto originales de ABS- SULZER.",
+        text: "Tenemos de una amplia gama de repuesto y partes originales de ABS- SULZER.",
       },
       {
         icon: "toolbox-outline",
@@ -105,5 +124,9 @@ export default {
       },
     ],
   }),
+
+  computed: {
+    ...mapState(["isMobile"]),
+  },
 };
 </script>

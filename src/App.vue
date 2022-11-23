@@ -1,50 +1,26 @@
 <template>
-  <v-app>
-    <!-- @import: drawer -->
-    <app-drawer v-model="drawer" @input="drawer = null" />
-
-    <!-- @import: header -->
-    <app-header @input="drawer = $event" />
-
-    <!-- content -->
-    <v-main>
-      <router-view />
-    </v-main>
-
-    <!-- loading -->
-    <v-overlay opacity="1" color="grey lighten-5" :value="overlay">
-      <v-card tile flat color="transparent">
-        <img src="./assets/logo.svg" alt="" height="60" />
-        <v-progress-linear indeterminate color="primary" class="mt-3" />
-      </v-card>
-    </v-overlay>
-
-    <!-- @import: footer -->
-    <app-footer />
+  <v-app id="app-isival">
+    <v-app-header />
+    <v-main><router-view /></v-main>
+    <v-app-footer />
   </v-app>
 </template>
 
 <script>
-import AppDrawer from "./components/layout/AppDrawer.vue";
-import AppHeader from "./components/layout/AppHeader.vue";
-import AppFooter from "./components/layout/AppFooter.vue";
 import { mapActions } from "vuex";
+import vAppHeader from "./layout/Header.vue";
+import vAppFooter from "./layout/Footer.vue";
 
 export default {
   name: "App",
 
-  components: { AppDrawer, AppHeader, AppFooter },
-
-  data: () => ({ drawer: null, overlay: false }),
-
-  methods: {
-    ...mapActions("Company", ["readerCompany"]),
-  },
+  components: { vAppHeader, vAppFooter },
+  data: () => ({ drawer: null, loading: true }),
+  methods: { ...mapActions("Company", ["readerCompany"]) },
 
   async mounted() {
-    this.overlay = true;
     await this.readerCompany();
-    this.overlay = false;
+    this.loading = false;
   },
 };
 </script>

@@ -77,14 +77,26 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!-- loading -->
+    <v-app-loading v-model="loading" :absolute="true" />
   </div>
 </template>
 
 <script>
+import vAppLoading from "../layout/Loading.vue";
 import PageHeader from "../components/pages/PageHeader.vue";
 
 export default {
-  components: { PageHeader },
+  components: { vAppLoading, PageHeader },
+
+  data: () => ({ loading: false }),
+
+  created() {
+    this.loading = true;
+
+    setTimeout(() => this.loading = false, 600);
+  },
 };
 </script>
 

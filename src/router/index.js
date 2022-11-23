@@ -15,6 +15,11 @@ const routes = [
     name: 'About',
     component: () => import('../views/About.vue')
   },
+  {
+    path: '/repuestos',
+    name: 'Parts',
+    component: () => import('../views/Parts.vue')
+  },
 
   // @module: rental
   {

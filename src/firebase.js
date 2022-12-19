@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore"
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, connectStorageEmulator } from "firebase/storage";
 
 // TODO: Replace the following with your app  's Firebase project configuration
 const firebaseConfig = {
@@ -12,11 +13,14 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
+const storage = getStorage(app);
 const db = getFirestore(app);
 
-if (process.env.NODE_ENV === 'development_') {
+if (process.env.NODE_ENV === 'development') {
+
+  connectStorageEmulator(storage, "localhost", 9199);
   connectFirestoreEmulator(db, 'localhost', 8081);
 }
 
-export { db }
+export { db, storage }
+export { getStorage, ref, uploadBytesResumable, getDownloadURL, connectStorageEmulator }

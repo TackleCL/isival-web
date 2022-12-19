@@ -63,12 +63,13 @@
         </v-col>
         <!-- form -->
         <v-col cols="12" md="5">
-          <h3 class="text-h5 font-weight-medium concrete--text mb-3">
-            Datos de Contacto:
-          </h3>
           <v-form ref="form" @submit.prevent="onCheckout" :disabled="loading">
             <v-row>
               <v-col cols="12">
+                <!-- contact -->
+                <h4 class="text-subtitle-1 font-weight-medium mb-4">
+                  Datos de Contacto:
+                </h4>
                 <v-text-field
                   outlined
                   hide-details
@@ -98,15 +99,31 @@
                   :rules="required"
                 />
               </v-col>
+              <!-- company -->
+              <v-col cols="12" class="pb-0">
+                <h4 class="text-subtitle-1 font-weight-medium">
+                  Datos de la Empresa:
+                </h4>
+              </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   outlined
                   hide-details
-                  label="Nombre Empresa"
+                  :rules="required"
+                  label="Nombre Empresa *"
                   v-model="quote.company"
                 />
               </v-col>
               <v-col cols="12" md="6">
+                <v-text-field
+                  outlined
+                  hide-details
+                  :rules="required"
+                  label="Rut Empresa *"
+                  v-model="quote.companyRut"
+                />
+              </v-col>
+              <v-col cols="12">
                 <v-select
                   :items="regiones"
                   label="Región"
@@ -114,7 +131,6 @@
                   hide-details
                   item-text="region"
                   item-value="region"
-                  :rules="required"
                   v-model="quote.region"
                 />
               </v-col>

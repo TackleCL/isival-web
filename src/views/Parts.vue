@@ -4,7 +4,7 @@
     <v-app-title title="Repuestos" />
 
     <!-- content -->
-    <v-container>
+    <v-container class="mb-6">
       <v-row>
         <!-- content -->
         <v-col cols="12" md="8">
@@ -16,17 +16,44 @@
         </v-col>
 
         <!-- form -->
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="4">
           <h4 class="mb-3 text-h6">Cotiza Repustos</h4>
           <v-form ref="form" @submit.prevent>
-            <v-text-field filled dense label="Nombre" />
+            <!-- name -->
             <v-text-field
-              filled
-              dense
-              hide-details
-              label="Email *"
-              type="email"
+              outlined
+              label="Nombre"
+              :rules="required"
+              v-model="item.name"
             />
+            <!-- email -->
+            <v-text-field
+              outlined
+              label="Email *"
+              type="email "
+              :rules="required"
+              v-model="item.email"
+            />
+            <!-- file -->
+            <v-file-input
+              outlined
+              label="Imagen"
+              prepend-icon
+              prepend-inner-icon="mdi-camera-plus-outline"
+              v-model="image"
+            />
+            <!-- button -->
+            <v-btn
+              block
+              depressed
+              x-large
+              @click="onSubmit"
+              :loading="isLoading"
+              :disabled="isLoading"
+              color="primary"
+            >
+              Enviar
+            </v-btn>
           </v-form>
         </v-col>
       </v-row>
@@ -38,12 +65,53 @@
 </template>
 
 <script>
+import forms from "@/mixins/forms";
+import upload from "@/mixins/files";
 import vAppTitle from "../layout/Title.vue";
 import vAppLoading from "../layout/Loading.vue";
+import { mapActions } from "vuex";
 
 export default {
-  data: () => ({ loading: false }),
+  data: () => ({ item: {}, image: null, loading: false, isLoading: false }),
+
+  mixins: [forms, upload],
+
   components: { vAppTitle, vAppLoading },
+
+  methods: {
+    ...mapActions(["formParts"]),
+
+    async onSubmit() {
+      if (this.$refs.form.validate()) {
+        this.isLoading = true;
+
+        const product = {
+          createAt: new Date(),
+          ...this.item,
+        };
+
+        // 02. upload image
+        if (this.image) {
+          await this.imageUpload(this.image)
+            .then((resp) => {
+              product.image = resp;
+            })
+            .catch((err) => {
+              console.error(err);
+              return;
+            });
+        } else {
+          product.image = null;
+        }
+
+        // create request
+        await this.formParts(product);
+        this.isLoading = false;
+        this.$refs.form.reset()
+      }
+    },
+  },
+
   created() {
     this.loading = true;
     setTimeout(() => (this.loading = false), 500);
